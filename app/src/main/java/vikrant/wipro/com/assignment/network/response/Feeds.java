@@ -8,19 +8,24 @@ import java.util.List;
 
 /**
  * Created by Vikrant Alekar on 23-11-2018.
+ * <p>
+ * This class is POJO class to hold feeds information
  */
 
 /**
  * This class is POJO class to hold feeds information
  */
 
+/**
+ * This class holds list of feeds info with its header
+ */
 public class Feeds {
     @SerializedName("title")
     @Expose
     private String headlineTitle;
     @SerializedName("rows")
     @Expose
-    private List<FeedInfo> feed= null;
+    private List<FeedInfo> feed = null;
 
     public String getHeadlineTitle() {
         return headlineTitle;

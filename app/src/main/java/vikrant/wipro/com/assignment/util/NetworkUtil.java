@@ -7,6 +7,9 @@ import android.net.NetworkInfo;
  * Created by Vikrant Alekar on 08-08-2018.
  */
 
+/**
+ * This class is using for network related util functions like to check internet is present or not?
+ */
 public class NetworkUtil {
     private NetworkUtil() {
     }

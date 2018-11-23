@@ -8,7 +8,7 @@ import vikrant.wipro.com.assignment.network.ICallbackListener;
  */
 
 /**
- * This interface using as contract for feeds it will be implement by either network/DB layer
+ * This interface using as contract for feeds it will be implement by either Network/DB layer
  *
  * @param <T>
  */

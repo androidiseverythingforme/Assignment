@@ -3,6 +3,9 @@ package vikrant.wipro.com.assignment.network.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * This class holds feed info
+ */
 public class FeedInfo {
     @SerializedName("title")
     @Expose
