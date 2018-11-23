@@ -24,7 +24,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_my_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item_feed, parent, false);
         return new ViewHolder(view);
     }
 
@@ -43,7 +43,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 
         ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.tvName);
+            textView = (TextView) itemView.findViewById(R.id.text_view_name);
         }
     }
 }
