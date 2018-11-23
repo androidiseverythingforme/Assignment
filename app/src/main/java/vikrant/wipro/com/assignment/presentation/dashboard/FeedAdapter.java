@@ -20,7 +20,7 @@ import vikrant.wipro.com.assignment.network.response.FeedInfo;
  * Created by Vikrant Alekar on 23-11-2018.
  */
 
-public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
+public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
     private List<FeedInfo> mFeedList;
 
     public FeedAdapter(List<FeedInfo> feeds) {
@@ -28,13 +28,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FeedViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item_feed, parent, false);
-        return new ViewHolder(view);
+        return new FeedViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(FeedViewHolder holder, int position) {
         holder.tvFeedTitle.setText(mFeedList.get(position).getTitle());
         holder.tvFeedDescription.setText(mFeedList.get(position).getDescription());
         if (!TextUtils.isEmpty(mFeedList.get(position).getImageUrl())) {
@@ -49,12 +49,12 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
         return mFeedList.size();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    static class FeedViewHolder extends RecyclerView.ViewHolder {
         TextView tvFeedTitle;
         TextView tvFeedDescription;
         ImageView ivFeedImage;
 
-        ViewHolder(View itemView) {
+        FeedViewHolder(View itemView) {
             super(itemView);
             tvFeedTitle = (TextView) itemView.findViewById(R.id.text_view_title);
             tvFeedDescription = (TextView) itemView.findViewById(R.id.text_view_description);

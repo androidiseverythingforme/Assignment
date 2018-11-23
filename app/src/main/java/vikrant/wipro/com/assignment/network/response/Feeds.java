@@ -20,7 +20,7 @@ public class Feeds {
     private String headlineTitle;
     @SerializedName("rows")
     @Expose
-    private List<FeedInfo> feeds = null;
+    private List<FeedInfo> feed= null;
 
     public String getHeadlineTitle() {
         return headlineTitle;
@@ -31,18 +31,18 @@ public class Feeds {
     }
 
     public List<FeedInfo> getFeeds() {
-        return feeds;
+        return feed;
     }
 
     public void setFeeds(List<FeedInfo> feeds) {
-        this.feeds = feeds;
+        this.feed = feeds;
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Feeds{");
         sb.append("headlineTitle='").append(headlineTitle).append('\'');
-        sb.append(", feeds=").append(feeds);
+        sb.append(", feeds=").append(feed);
         sb.append('}');
         return sb.toString();
     }

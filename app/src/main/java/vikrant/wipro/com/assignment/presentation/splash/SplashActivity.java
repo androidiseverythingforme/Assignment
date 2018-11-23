@@ -19,11 +19,6 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
     private SplashContract.ISplashPresenter presenter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         if (presenter != null) {

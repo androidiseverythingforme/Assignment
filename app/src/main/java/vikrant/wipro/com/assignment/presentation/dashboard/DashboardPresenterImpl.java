@@ -14,7 +14,7 @@ public class DashboardPresenterImpl implements DashboardContract.IDashboardPrese
     private WeakReference<DashboardContract.IDashboardView> view;
 
     DashboardPresenterImpl(DashboardContract.IDashboardView view) {
-        this.view = new WeakReference<DashboardContract.IDashboardView>(view);
+        this.view = new WeakReference<>(view);
     }
 
     /**
@@ -23,11 +23,12 @@ public class DashboardPresenterImpl implements DashboardContract.IDashboardPrese
 
     @Override
     public void onViewAttached() {
+        //empty
     }
 
     @Override
     public void onViewDetached() {
-
+        //empty
     }
 
     @Override

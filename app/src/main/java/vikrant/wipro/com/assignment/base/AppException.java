@@ -14,8 +14,8 @@ public class AppException extends Exception {
         GENERAL;
     }
 
-    private AppExceptionType mExceptionType;
-    private String mErrorMessage;
+    private final AppExceptionType mExceptionType;
+    private final String mErrorMessage;
 
     public AppException(AppExceptionType appExceptionType, String errorMessage) {
         super(errorMessage);

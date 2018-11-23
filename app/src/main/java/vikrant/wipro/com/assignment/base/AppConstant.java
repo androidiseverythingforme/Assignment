@@ -5,5 +5,8 @@ package vikrant.wipro.com.assignment.base;
  */
 
 public class AppConstant {
+    private AppConstant() {
+    }
+
     public static final long SPLASH_TIME_OUT = 3000;
 }
