@@ -1,6 +1,7 @@
 package vikrant.wipro.com.assignment.base;
 
 import android.content.Context;
+import android.view.View;
 
 /**
  * Created by Vikrant Alekar on 23-11-2018.
@@ -23,7 +24,7 @@ public class BaseContract {
 
         void showEmptyView();
 
-        void showErrorView(AppException e);
+        void showErrorView(AppException e, View.OnClickListener clickListener);
 
         void showContentView();
 

@@ -28,7 +28,6 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
         super.onPostCreate(savedInstanceState);
         if (presenter != null) {
             presenter.startSplashTimer(AppConstant.SPLASH_TIME_OUT);
-            showLoadingView();
         }
     }
 
@@ -59,7 +58,6 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
     @Override
     public void openDashboardActivity() {
         showContentView();
-        showToast("Redirecting to dashboard");
         startActivity(new Intent(this, DashboardActivity.class));
         finish();
     }
