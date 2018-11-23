@@ -1,11 +1,9 @@
 package vikrant.wipro.com.assignment.presentation.dashboard;
 
 
-import java.util.List;
-
 import vikrant.wipro.com.assignment.base.AppException;
 import vikrant.wipro.com.assignment.base.BaseContract;
-import vikrant.wipro.com.assignment.network.response.FeedInfo;
+import vikrant.wipro.com.assignment.network.response.Feeds;
 
 /**
  * Created by Vikrant Alekar on 23-11-2018.
@@ -17,7 +15,7 @@ class DashboardContract {
     }
 
     public interface IDashboardView extends BaseContract.IView {
-        void successInFeedRetrieval(List<FeedInfo> feeds);
+        void successInFeedRetrieval(Feeds feeds);
 
         void errorInFeedsRetrieval(AppException exception);
 

@@ -1,14 +1,19 @@
 package vikrant.wipro.com.assignment.presentation.dashboard;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 import vikrant.wipro.com.assignment.R;
+import vikrant.wipro.com.assignment.WiproAssignment;
 import vikrant.wipro.com.assignment.network.response.FeedInfo;
 
 /**
@@ -30,7 +35,13 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.textView.setText(mFeedList.get(position).getTitle());
+        holder.tvFeedTitle.setText(mFeedList.get(position).getTitle());
+        holder.tvFeedDescription.setText(mFeedList.get(position).getDescription());
+        if (!TextUtils.isEmpty(mFeedList.get(position).getImageUrl())) {
+            Picasso.with(WiproAssignment.getContext()).load(mFeedList.get(position).getImageUrl()).into(holder.ivFeedImage);
+        } else {
+            holder.ivFeedImage.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -39,11 +50,15 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.ViewHolder> {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
+        TextView tvFeedTitle;
+        TextView tvFeedDescription;
+        ImageView ivFeedImage;
 
         ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.text_view_name);
+            tvFeedTitle = (TextView) itemView.findViewById(R.id.text_view_title);
+            tvFeedDescription = (TextView) itemView.findViewById(R.id.text_view_description);
+            ivFeedImage = (ImageView) itemView.findViewById(R.id.image_view_image);
         }
     }
 }

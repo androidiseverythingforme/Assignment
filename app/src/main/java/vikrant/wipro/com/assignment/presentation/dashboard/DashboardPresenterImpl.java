@@ -36,7 +36,7 @@ public class DashboardPresenterImpl implements DashboardContract.IDashboardPrese
             @Override
             public void onSuccess(Feeds response) {
                 if (view.get() != null) {
-                    view.get().successInFeedRetrieval(response.getFeeds());
+                    view.get().successInFeedRetrieval(response);
                 }
             }
 

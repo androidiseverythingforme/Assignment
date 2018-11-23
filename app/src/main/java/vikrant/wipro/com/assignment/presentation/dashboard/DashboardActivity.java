@@ -2,7 +2,6 @@ package vikrant.wipro.com.assignment.presentation.dashboard;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,14 +16,16 @@ import vikrant.wipro.com.assignment.base.AppException;
 import vikrant.wipro.com.assignment.base.BaseActivity;
 import vikrant.wipro.com.assignment.base.BaseContract;
 import vikrant.wipro.com.assignment.network.response.FeedInfo;
+import vikrant.wipro.com.assignment.network.response.Feeds;
 
 /**
  * Created by Vikrant Alekar on 23-11-2018.
  */
 public class DashboardActivity extends BaseActivity implements DashboardContract.IDashboardView {
     private DashboardContract.IDashboardPresenter mPresenter;
-    private List<FeedInfo> mFeeds;
+    private List<FeedInfo> mFeeds = new ArrayList<>();
     private int mLoadedItems = 0;
+    private int mTotalItems = 14; //Currently given server API doesnt giving total items count so here am assuming total items will be 14
     private FeedAdapter mFeedAdapter;
     private RecyclerView mRecyclerView;
 
@@ -73,47 +74,28 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.addItemDecoration(new DividerItemDecoration(DashboardActivity.this, DividerItemDecoration.VERTICAL));
-        mFeeds = new ArrayList<>();
-        mFeedAdapter = new FeedAdapter(mFeeds);
-        mRecyclerView.setAdapter(mFeedAdapter);
-        addDataToList();
 
         mRecyclerView.addOnScrollListener(new EndlessRecyclerOnScrollListener() {
             @Override
             public void onLoadMore() {
-                //Call API related code here to get data
-                if (mLoadedItems <= 30) {
-                    addDataToList();
+                //Call API related code here to get data from network / DB layer
+                if (mLoadedItems <= mTotalItems) {
+                    getFeeds();
                 }
             }
         });
 
     }
 
-    private void addDataToList() {
-//        showLoadingView();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                for (int i = 0; i <= 20; i++) {
-//                    FeedInfo feedInfo = new FeedInfo();
-//                    feedInfo.setTitle("Title " + i);
-//                    feedInfo.setDescription("Description " + i);
-//                    feedInfo.setImageUrl("Url " + i);
-//                    mFeeds.add(feedInfo);
-//                    mLoadedItems++;
-//                }
-//                mFeedAdapter.notifyDataSetChanged();
-//                showContentView();
-//            }
-//        }, 1500);
-    }
-
     @Override
-    public void successInFeedRetrieval(List<FeedInfo> feeds) {
-        mFeeds = feeds;
-        mFeedAdapter.notifyDataSetChanged();
+    public void successInFeedRetrieval(Feeds data) {
         showContentView();
+        mFeeds.clear();
+        mFeeds = data.getFeeds();
+        getSupportActionBar().setTitle(data.getHeadlineTitle());
+        mLoadedItems = mFeeds.size();
+        mFeedAdapter = new FeedAdapter(mFeeds);
+        mRecyclerView.setAdapter(mFeedAdapter);
     }
 
     @Override
@@ -130,7 +112,7 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
 
     private void getFeeds() {
         if (mPresenter != null) {
-            showToast(R.string.toast_msg_getfeeds);
+            showLoadingView();
             mPresenter.getFeeds();
         }
     }

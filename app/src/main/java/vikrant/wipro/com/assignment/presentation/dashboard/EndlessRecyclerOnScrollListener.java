@@ -38,7 +38,6 @@ public abstract class EndlessRecyclerOnScrollListener extends RecyclerView.OnScr
             // End has been reached
 
             onLoadMore();
-
             mLoading = true;
         }
     }
