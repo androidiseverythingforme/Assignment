@@ -1,6 +1,10 @@
 <resources>
-    <dimen name="feed_header_text_size">20dp</dimen>
+    <dimen name="feed_header_text_size">18dp</dimen>
     <dimen name="feed_description_text_size">15dp</dimen>
     <dimen name="cell_margin">5dp</dimen>
+    <dimen name="cell_padding">4dp</dimen>
+    <dimen name="dashboard_top_margin">8dp</dimen>
+    <dimen name="progressbar_height_width">50dp</dimen>
+    <dimen name="feed_card_view_radius">3dp</dimen>
 
 </resources>
