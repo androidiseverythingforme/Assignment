@@ -42,14 +42,4 @@ public class FeedInfo implements Serializable {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("FeedInfo{");
-        sb.append("title='").append(title).append('\'');
-        sb.append(", description='").append(description).append('\'');
-        sb.append(", imageUrl='").append(imageUrl).append('\'');
-        sb.append('}');
-        return sb.toString();
-    }
 }

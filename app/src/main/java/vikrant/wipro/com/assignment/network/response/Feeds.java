@@ -10,6 +10,8 @@ import java.util.List;
  * Created by Vikrant Alekar on 23-11-2018.
  * <p>
  * This class is POJO class to hold feeds information
+ * <p>
+ * This class is POJO class to hold feeds information
  */
 
 /**
@@ -43,12 +45,4 @@ public class Feeds {
         this.feed = feeds;
     }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("Feeds{");
-        sb.append("headlineTitle='").append(headlineTitle).append('\'');
-        sb.append(", feeds=").append(feed);
-        sb.append('}');
-        return sb.toString();
-    }
 }
