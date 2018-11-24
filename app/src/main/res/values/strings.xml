@@ -1,7 +1,7 @@
 <resources>
+    <string name="title_feed_detail">Feed Detail</string>
     <string name="app_name">Assignment</string>
     <string name="developer_name">Developed by - Vikrant Alekar</string>
     <string name="api_base_url">https://dl.dropboxusercontent.com/</string>
-
     <string name="toast_msg_getfeeds">Retrieving feeds</string>
 </resources>

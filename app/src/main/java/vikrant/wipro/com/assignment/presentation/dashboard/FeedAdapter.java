@@ -15,6 +15,7 @@ import java.util.List;
 import vikrant.wipro.com.assignment.R;
 import vikrant.wipro.com.assignment.WiproAssignment;
 import vikrant.wipro.com.assignment.network.response.FeedInfo;
+import vikrant.wipro.com.assignment.presentation.details.ItemClickListener;
 
 /**
  * Created by Vikrant Alekar on 23-11-2018.
@@ -22,9 +23,11 @@ import vikrant.wipro.com.assignment.network.response.FeedInfo;
 
 public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder> {
     private List<FeedInfo> mFeedList;
+    private ItemClickListener<FeedInfo> mItemClickListener;
 
-    public FeedAdapter(List<FeedInfo> feeds) {
+    public FeedAdapter(List<FeedInfo> feeds, ItemClickListener<FeedInfo> itemClickListner) {
         this.mFeedList = feeds;
+        this.mItemClickListener = itemClickListner;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
     }
 
     @Override
-    public void onBindViewHolder(FeedViewHolder holder, int position) {
+    public void onBindViewHolder(FeedViewHolder holder, final int position) {
         holder.tvFeedTitle.setText(mFeedList.get(position).getTitle());
         holder.tvFeedDescription.setText(mFeedList.get(position).getDescription());
         if (!TextUtils.isEmpty(mFeedList.get(position).getImageUrl())) {
@@ -42,6 +45,14 @@ public class FeedAdapter extends RecyclerView.Adapter<FeedAdapter.FeedViewHolder
         } else {
             holder.ivFeedImage.setVisibility(View.GONE);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mItemClickListener != null) {
+                    mItemClickListener.onItemClick(mFeedList.get(position));
+                }
+            }
+        });
     }
 
     @Override

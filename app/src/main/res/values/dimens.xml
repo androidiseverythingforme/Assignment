@@ -6,5 +6,6 @@
     <dimen name="dashboard_top_margin">8dp</dimen>
     <dimen name="progressbar_height_width">50dp</dimen>
     <dimen name="feed_card_view_radius">3dp</dimen>
+    <dimen name="feed_details_padding">5dp</dimen>
 
 </resources>

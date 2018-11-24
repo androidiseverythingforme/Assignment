@@ -3,10 +3,12 @@ package vikrant.wipro.com.assignment.network.response;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
+
 /**
  * This class holds feed info
  */
-public class FeedInfo {
+public class FeedInfo implements Serializable {
     @SerializedName("title")
     @Expose
     private String title;
