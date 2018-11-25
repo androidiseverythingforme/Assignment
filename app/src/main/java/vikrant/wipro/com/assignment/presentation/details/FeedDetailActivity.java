@@ -33,10 +33,7 @@ public class FeedDetailActivity extends BaseActivity implements FeedDetailContra
 
     @Override
     protected BaseContract.IPresenter getPresenter() {
-        if (mPresenter == null) {
-            return mPresenter = new FeedDetailPresenterImpl(this);
-        }
-        return mPresenter;
+        return mPresenter == null ? new FeedDetailPresenterImpl(this) : null;
     }
 
     @Override

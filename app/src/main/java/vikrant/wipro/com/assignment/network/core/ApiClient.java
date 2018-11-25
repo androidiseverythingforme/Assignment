@@ -27,6 +27,9 @@ public class ApiClient {
     private static final String BASE_URL = WiproAssignment.getContext().getResources().getString(R.string.api_base_url);
     private static Retrofit retrofit = null;
 
+    private ApiClient() {
+    }
+
     public static Retrofit getClient() {
         if (retrofit == null) {
             Gson gson = new GsonBuilder()
@@ -55,7 +58,7 @@ public class ApiClient {
                     new X509TrustManager() {
                         @Override
                         public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                        //empty
+                            //empty
                         }
 
                         @Override

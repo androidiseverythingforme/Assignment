@@ -52,10 +52,7 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
 
     @Override
     protected BaseContract.IPresenter getPresenter() {
-        if (mPresenter == null) {
-            return mPresenter = new DashboardPresenterImpl(this);
-        }
-        return mPresenter;
+        return mPresenter == null ? new DashboardPresenterImpl(this) : null;
     }
 
     @Override

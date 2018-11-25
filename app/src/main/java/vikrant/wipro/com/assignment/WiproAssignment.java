@@ -7,7 +7,7 @@ import android.content.Context;
  * Created by Vikrant Alekar on 23-11-2018.
  */
 public class WiproAssignment extends Application {
-    public static  WiproAssignment sInstance = null;
+    public static WiproAssignment sInstance = null;
 
     public static WiproAssignment getInstance() {
         if (sInstance == null) {
