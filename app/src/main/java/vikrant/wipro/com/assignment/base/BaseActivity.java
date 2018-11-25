@@ -20,7 +20,7 @@ import vikrant.wipro.com.assignment.WiproAssignment;
  */
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseContract.IView {
-    private ProgressLayout progressLayout;
+    private ProgressLayout mProgressLayout;
     protected boolean mIsResumed;
     private Drawable mEmptyDrawable;
     private Drawable mErrorDrawable;
@@ -74,13 +74,13 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void showLoadingView() {
-        progressLayout.showLoading();
+        mProgressLayout.showLoading();
         hideKeyboard();
     }
 
     @Override
     public void showEmptyView() {
-        progressLayout.showEmpty(mEmptyDrawable, "No Data Found", "Oops !, No data found.");
+        mProgressLayout.showEmpty(mEmptyDrawable, "No Data Found", "Oops !, No data found.");
         hideKeyboard();
     }
 
@@ -90,7 +90,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             showToast(e.getErrorMessage());
             showContentView();
         } else {
-            progressLayout.showError(mErrorDrawable,
+            mProgressLayout.showError(mErrorDrawable,
                     e.getExceptionType().toString(),
                     e.getErrorMessage(),
                     "Try Again", clickListener);
@@ -100,7 +100,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void showContentView() {
-        progressLayout.showContent();
+        mProgressLayout.showContent();
     }
 
     /**
@@ -123,9 +123,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     protected abstract BaseContract.IPresenter getPresenter();
 
     private void initView() {
-        progressLayout = (ProgressLayout) findViewById(R.id.progress);
-        mEmptyDrawable = getResources().getDrawable(R.mipmap.ic_launcher);
-        mErrorDrawable = getResources().getDrawable(R.mipmap.ic_launcher);
+        mProgressLayout = (ProgressLayout) findViewById(R.id.progress);
+        mEmptyDrawable = getResources().getDrawable(R.drawable.ic_empty);
+        mErrorDrawable = getResources().getDrawable(R.drawable.ic_error);
     }
 
     private void hideKeyboard() {
