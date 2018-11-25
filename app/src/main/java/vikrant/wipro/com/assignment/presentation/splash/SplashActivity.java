@@ -16,13 +16,13 @@ import vikrant.wipro.com.assignment.presentation.dashboard.DashboardActivity;
  */
 
 public class SplashActivity extends BaseActivity implements SplashContract.ISplashView {
-    private SplashContract.ISplashPresenter presenter;
+    private SplashContract.ISplashPresenter mPresenter;
 
     @Override
     public void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        if (presenter != null) {
-            presenter.startSplashTimer(AppConstant.SPLASH_TIME_OUT);
+        if (mPresenter != null) {
+            mPresenter.startSplashTimer(AppConstant.SPLASH_TIME_OUT);
         }
     }
 
@@ -33,10 +33,10 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
 
     @Override
     protected BaseContract.IPresenter getPresenter() {
-        if (presenter == null) {
-            return presenter = new SplashPresenterImpl(this);
+        if (mPresenter == null) {
+            return mPresenter = new SplashPresenterImpl(this);
         }
-        return presenter;
+        return mPresenter;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
 
 
     @Override
-    public void openDashboardActivity() {
+    public void openNextActivity() {
         showContentView();
         startActivity(new Intent(this, DashboardActivity.class));
         finish();

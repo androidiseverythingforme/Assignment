@@ -4,7 +4,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import vikrant.wipro.com.assignment.base.AppException;
-import vikrant.wipro.com.assignment.network.ICallbackListener;
+import vikrant.wipro.com.assignment.data.listener.ICallbackListener;
 import vikrant.wipro.com.assignment.network.core.ApiClient;
 import vikrant.wipro.com.assignment.network.core.ApiInterface;
 import vikrant.wipro.com.assignment.data.contract.IFeedRepository;

@@ -12,6 +12,6 @@ class SplashContract {
     }
 
     public interface ISplashView extends BaseContract.IView {
-        void openDashboardActivity();
+        void openNextActivity();
     }
 }

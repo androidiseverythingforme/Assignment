@@ -9,10 +9,10 @@ import java.lang.ref.WeakReference;
  */
 
 public class SplashPresenterImpl implements SplashContract.ISplashPresenter {
-    private WeakReference<SplashContract.ISplashView> view;
+    private WeakReference<SplashContract.ISplashView> mView;
 
     SplashPresenterImpl(SplashContract.ISplashView view) {
-        this.view = new WeakReference<>(view);
+        this.mView = new WeakReference<>(view);
     }
 
     /**
@@ -32,12 +32,12 @@ public class SplashPresenterImpl implements SplashContract.ISplashPresenter {
 
     @Override
     public void startSplashTimer(long splashTime) {
-        if (view != null) {
+        if (mView != null) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (view.get() != null) {
-                        view.get().openDashboardActivity();
+                    if (mView.get() != null) {
+                        mView.get().openNextActivity();
                     }
                 }
             }, splashTime);

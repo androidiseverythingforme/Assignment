@@ -3,7 +3,7 @@ package vikrant.wipro.com.assignment.presentation.dashboard;
 import java.lang.ref.WeakReference;
 
 import vikrant.wipro.com.assignment.base.AppException;
-import vikrant.wipro.com.assignment.network.ICallbackListener;
+import vikrant.wipro.com.assignment.data.listener.ICallbackListener;
 import vikrant.wipro.com.assignment.network.repository.FeedRepository;
 import vikrant.wipro.com.assignment.network.response.Feeds;
 

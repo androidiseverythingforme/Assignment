@@ -1,4 +1,4 @@
-package vikrant.wipro.com.assignment.network;
+package vikrant.wipro.com.assignment.data.listener;
 
 import vikrant.wipro.com.assignment.base.AppException;
 

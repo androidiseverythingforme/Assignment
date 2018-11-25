@@ -123,7 +123,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
     protected abstract BaseContract.IPresenter getPresenter();
 
     private void initView() {
-        progressLayout = findViewById(R.id.progress);
+        progressLayout = (ProgressLayout) findViewById(R.id.progress);
         mEmptyDrawable = getResources().getDrawable(R.mipmap.ic_launcher);
         mErrorDrawable = getResources().getDrawable(R.mipmap.ic_launcher);
     }

@@ -1,6 +1,6 @@
 package vikrant.wipro.com.assignment.data.contract;
 
-import vikrant.wipro.com.assignment.network.ICallbackListener;
+import vikrant.wipro.com.assignment.data.listener.ICallbackListener;
 
 
 /**
@@ -8,7 +8,7 @@ import vikrant.wipro.com.assignment.network.ICallbackListener;
  */
 
 /**
- * This interface using as contract for feeds it will be implement by either Network/DB layer
+ * This interface using as contract for feeds it will be implement by either Network/DB layer (facade pattern)
  *
  * @param <T>
  */

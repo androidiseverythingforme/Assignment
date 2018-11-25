@@ -59,6 +59,13 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mItemClickListener = null;
+    }
+
+
+    @Override
     public Context getContext() {
         return this;
     }
@@ -66,6 +73,36 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
     @Override
     public boolean isViewResumed() {
         return mIsResumed;
+    }
+
+    @Override
+    public void successInFeedRetrieval(Feeds data) {
+        showContentView();
+        mFeeds.clear();
+        mFeeds = data.getFeeds();
+        getSupportActionBar().setTitle(data.getHeadlineTitle());
+        mLoadedItems = mFeeds.size();
+        mFeedAdapter = new FeedAdapter(mFeeds, mItemClickListener);
+        mRecyclerView.setAdapter(mFeedAdapter);
+    }
+
+    @Override
+    public void errorInFeedsRetrieval(AppException exception) {
+        mFeeds = null;
+        mFeedAdapter.notifyDataSetChanged();
+        showErrorView(exception, new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFeeds();
+            }
+        });
+    }
+
+    private void getFeeds() {
+        if (mPresenter != null) {
+            showLoadingView();
+            mPresenter.getFeeds();
+        }
     }
 
     private void init() {
@@ -94,41 +131,5 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
                 startActivity(new Intent(DashboardActivity.this, FeedDetailActivity.class).putExtra(FeedDetailActivity.FEED_DETAIL, feedInfo));
             }
         };
-    }
-
-    @Override
-    public void successInFeedRetrieval(Feeds data) {
-        showContentView();
-        mFeeds.clear();
-        mFeeds = data.getFeeds();
-        getSupportActionBar().setTitle(data.getHeadlineTitle());
-        mLoadedItems = mFeeds.size();
-        mFeedAdapter = new FeedAdapter(mFeeds, mItemClickListener);
-        mRecyclerView.setAdapter(mFeedAdapter);
-    }
-
-    @Override
-    public void errorInFeedsRetrieval(AppException exception) {
-        mFeeds = null;
-        mFeedAdapter.notifyDataSetChanged();
-        showErrorView(exception, new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getFeeds();
-            }
-        });
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mItemClickListener = null;
-    }
-
-    private void getFeeds() {
-        if (mPresenter != null) {
-            showLoadingView();
-            mPresenter.getFeeds();
-        }
     }
 }
