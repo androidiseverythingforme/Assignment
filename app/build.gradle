@@ -17,18 +17,40 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    defaultConfig {
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     testImplementation 'junit:junit:4.12'
     // required if you want to use Mockito for unit tests
     testImplementation 'org.mockito:mockito-core:2.7.22'
     // required if you want to use Mockito for Android tests
     androidTestImplementation 'org.mockito:mockito-android:2.7.22'
+    //for UI testing
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2') {
+        // Necessary if your app targets Marshmallow (since Espresso
+        // hasn't moved to Marshmallow yet)
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation('com.android.support.test:runner:0.3') {
+        // Necessary if your app targets Marshmallow (since the test runner
+        // hasn't moved to Marshmallow yet)
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation('com.android.support.test.espresso:espresso-intents:2.2') {
+        // Necessary to avoid version conflicts
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+    //for support/UI/Design libraries
     implementation 'com.android.support:appcompat-v7:25.0.0'
     implementation 'com.android.support:design:25.0.0'
     implementation 'com.android.support:recyclerview-v7:25.0.0'
