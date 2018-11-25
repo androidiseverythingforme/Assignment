@@ -86,7 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void showErrorView(AppException e, View.OnClickListener clickListener) {
-        if (e.getExceptionType() == AppException.AppExceptionType.VALIDATION_EXCEPTION || e.getExceptionType() == AppException.AppExceptionType.SERVER_EXCEPTION) {
+        if (e.getExceptionType() == AppException.AppExceptionType.VALIDATION_EXCEPTION) {
             showToast(e.getErrorMessage());
             showContentView();
         } else {

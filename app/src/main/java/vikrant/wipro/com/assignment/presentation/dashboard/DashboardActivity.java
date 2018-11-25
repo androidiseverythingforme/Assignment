@@ -52,7 +52,7 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
 
     @Override
     protected BaseContract.IPresenter getPresenter() {
-        return mPresenter == null ? new DashboardPresenterImpl(this) : null;
+        return mPresenter == null ? mPresenter = new DashboardPresenterImpl(this) : null;
     }
 
     @Override
@@ -86,7 +86,6 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
     @Override
     public void errorInFeedsRetrieval(AppException exception) {
         mFeeds = null;
-        mFeedAdapter.notifyDataSetChanged();
         showErrorView(exception, new View.OnClickListener() {
             @Override
             public void onClick(View view) {

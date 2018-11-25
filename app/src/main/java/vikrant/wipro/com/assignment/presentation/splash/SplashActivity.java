@@ -33,7 +33,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.ISpla
 
     @Override
     protected BaseContract.IPresenter getPresenter() {
-        return mPresenter == null ? new SplashPresenterImpl(this) : null;
+        return mPresenter == null ? mPresenter = new SplashPresenterImpl(this) : null;
     }
 
     @Override
