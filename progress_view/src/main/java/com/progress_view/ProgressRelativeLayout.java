@@ -332,7 +332,7 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressLa
             loadingState = view.findViewById(R.id.layout_loading);
             loadingState.setTag(LOADING);
 
-            loadingStateProgressBar = view.findViewById(R.id.progress_bar_loading);
+            loadingStateProgressBar = (ProgressBar) view.findViewById(R.id.progress_bar_loading);
             loadingStateProgressBar.getLayoutParams().width = loadingStateProgressBarWidth;
             loadingStateProgressBar.getLayoutParams().height = loadingStateProgressBarHeight;
             loadingStateProgressBar.getIndeterminateDrawable()
@@ -359,9 +359,9 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressLa
             emptyState = view.findViewById(R.id.layout_empty);
             emptyState.setTag(EMPTY);
 
-            emptyStateImageView = view.findViewById(R.id.image_icon);
-            emptyStateTitleTextView = view.findViewById(R.id.text_title);
-            emptyStateContentTextView = view.findViewById(R.id.text_description);
+            emptyStateImageView = (ImageView)view.findViewById(R.id.image_icon);
+            emptyStateTitleTextView = (TextView) view.findViewById(R.id.text_title);
+            emptyStateContentTextView =(TextView) view.findViewById(R.id.text_description);
 
             emptyStateImageView.getLayoutParams().width = emptyStateImageWidth;
             emptyStateImageView.getLayoutParams().height = emptyStateImageHeight;
@@ -393,10 +393,10 @@ public class ProgressRelativeLayout extends RelativeLayout implements ProgressLa
             errorState = view.findViewById(R.id.layout_error);
             errorState.setTag(ERROR);
 
-            errorStateImageView = view.findViewById(R.id.image_icon);
-            errorStateTitleTextView = view.findViewById(R.id.text_title);
-            errorStateContentTextView = view.findViewById(R.id.text_description);
-            errorStateButton = view.findViewById(R.id.button_retry);
+            errorStateImageView =  (ImageView) view.findViewById(R.id.image_icon);
+            errorStateTitleTextView =  (TextView) view.findViewById(R.id.text_title);
+            errorStateContentTextView =  (TextView) view.findViewById(R.id.text_description);
+            errorStateButton =  (Button) view.findViewById(R.id.button_retry);
 
             errorStateImageView.getLayoutParams().width = errorStateImageWidth;
             errorStateImageView.getLayoutParams().height = errorStateImageHeight;
