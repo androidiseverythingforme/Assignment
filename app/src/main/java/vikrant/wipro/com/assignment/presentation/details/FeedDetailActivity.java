@@ -15,8 +15,7 @@ import vikrant.wipro.com.assignment.network.response.FeedInfo;
 /**
  * Created by Vikrant Alekar on 23-11-2018.
  */
-public class FeedDetailActivity extends BaseActivity implements FeedDetailContract.IDashboardView {
-    private FeedDetailContract.IDashboardPresenter mPresenter;
+public class FeedDetailActivity extends BaseActivity {
     public static final String FEED_DETAIL = "feed_detail";
     private FeedInfo mFeedDetails;
 
@@ -33,7 +32,7 @@ public class FeedDetailActivity extends BaseActivity implements FeedDetailContra
 
     @Override
     protected BaseContract.IPresenter getPresenter() {
-        return mPresenter == null ? mPresenter=new FeedDetailPresenterImpl(this) : null;
+       return null;
     }
 
     @Override

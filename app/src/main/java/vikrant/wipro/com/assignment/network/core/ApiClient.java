@@ -26,6 +26,7 @@ import vikrant.wipro.com.assignment.WiproAssignment;
 public class ApiClient {
     private static final String BASE_URL = WiproAssignment.getContext().getResources().getString(R.string.api_base_url);
     private static Retrofit retrofit = null;
+    private final static int TIMEOUT = 3;
 
     private ApiClient() {
     }
@@ -36,9 +37,9 @@ public class ApiClient {
                     .setLenient()
                     .create();
 
-            OkHttpClient client = getUnsafeOkHttpClient().readTimeout(3, TimeUnit.MINUTES)
-                    .connectTimeout(3, TimeUnit.MINUTES)
-                    .writeTimeout(3, TimeUnit.MINUTES).build();
+            OkHttpClient client = getUnsafeOkHttpClient().readTimeout(TIMEOUT, TimeUnit.MINUTES)
+                    .connectTimeout(TIMEOUT, TimeUnit.MINUTES)
+                    .writeTimeout(TIMEOUT, TimeUnit.MINUTES).build();
 
 
             retrofit = new Retrofit.Builder()

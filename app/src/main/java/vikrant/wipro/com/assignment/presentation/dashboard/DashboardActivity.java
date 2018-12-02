@@ -29,7 +29,6 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
     private List<FeedInfo> mFeeds = new ArrayList<>();
     private int mLoadedItems = 0;
     private int mTotalItems = 14; //Currently given server API doesnt giving total items count so here am assuming total items will be 14
-    private FeedAdapter mFeedAdapter;
     private RecyclerView mRecyclerView;
     private ItemClickListener<FeedInfo> mItemClickListener;
 
@@ -52,7 +51,10 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
 
     @Override
     protected BaseContract.IPresenter getPresenter() {
-        return mPresenter == null ? mPresenter = new DashboardPresenterImpl(this) : null;
+        if (mPresenter == null) {
+            mPresenter = new DashboardPresenterImpl(this);
+        }
+        return mPresenter;
     }
 
     @Override
@@ -79,8 +81,7 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
         mFeeds = data.getFeeds();
         getSupportActionBar().setTitle(data.getHeadlineTitle());
         mLoadedItems = mFeeds.size();
-        mFeedAdapter = new FeedAdapter(mFeeds, mItemClickListener);
-        mRecyclerView.setAdapter(mFeedAdapter);
+        mRecyclerView.setAdapter(new FeedAdapter(mFeeds, mItemClickListener));
     }
 
     @Override

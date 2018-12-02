@@ -24,10 +24,5 @@ public class WiproAssignment extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-        init();
-    }
-
-    private void init() {
-        //initialise your stuff here
     }
 }

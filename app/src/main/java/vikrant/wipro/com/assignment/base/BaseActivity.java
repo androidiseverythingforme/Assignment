@@ -80,7 +80,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
 
     @Override
     public void showEmptyView() {
-        mProgressLayout.showEmpty(mEmptyDrawable, "No Data Found", "Oops !, No data found.");
+        mProgressLayout.showEmpty(mEmptyDrawable, getResources().getString(R.string.no_data_found_title), getResources().getString(R.string.no_data_found_msg));
         hideKeyboard();
     }
 
@@ -93,7 +93,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseCont
             mProgressLayout.showError(mErrorDrawable,
                     e.getExceptionType().toString(),
                     e.getErrorMessage(),
-                    "Try Again", clickListener);
+                    getResources().getString(R.string.try_again), clickListener);
         }
         hideKeyboard();
     }

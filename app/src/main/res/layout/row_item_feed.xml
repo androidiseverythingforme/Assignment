@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@+id/imageview_right_arrow"
             android:padding="@dimen/cell_padding"
-            android:text="Title "
+            android:text=""
             android:textColor="@color/textColor"
             android:textSize="@dimen/feed_header_text_size"
             android:textStyle="bold" />
@@ -38,7 +38,7 @@
                 android:layout_weight=".60"
                 android:gravity="top|left"
                 android:padding="@dimen/cell_padding"
-                android:text="Description"
+                android:text=""
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/feed_description_text_size" />
 

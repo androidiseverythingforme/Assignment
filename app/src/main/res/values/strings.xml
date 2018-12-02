@@ -3,5 +3,8 @@
     <string name="app_name">Assignment</string>
     <string name="developer_name">Developed by - Vikrant Alekar</string>
     <string name="api_base_url">https://dl.dropboxusercontent.com/</string>
-    <string name="toast_msg_getfeeds">Retrieving feeds</string>
+
+    <string name="try_again">Try Again</string>
+    <string name="no_data_found_title">No Data Found</string>
+    <string name="no_data_found_msg">Oops !, No data found.</string>
 </resources>
