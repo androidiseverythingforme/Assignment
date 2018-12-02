@@ -26,73 +26,31 @@ import vikrant.wipro.com.assignment.WiproAssignment;
 public class ApiClient {
     private static final String BASE_URL = WiproAssignment.getContext().getResources().getString(R.string.api_base_url);
     private static Retrofit retrofit = null;
-    private final static int TIMEOUT = 3;
+    private final static long TIMEOUT = 5;
 
     private ApiClient() {
     }
 
     public static Retrofit getClient() {
         if (retrofit == null) {
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
-
-            OkHttpClient client = getUnsafeOkHttpClient().readTimeout(TIMEOUT, TimeUnit.MINUTES)
-                    .connectTimeout(TIMEOUT, TimeUnit.MINUTES)
-                    .writeTimeout(TIMEOUT, TimeUnit.MINUTES).build();
-
-
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson))
-                    .client(client)
+                    .addConverterFactory(GsonConverterFactory.create(getGsonFactory()))
+                    .client(getHttpClient())
                     .build();
         }
         return retrofit;
     }
 
-
-    private static OkHttpClient.Builder getUnsafeOkHttpClient() {
-        try {
-            // Create  trust manager that does not validate certificate chains
-            final TrustManager[] trustAllCerts = new TrustManager[]{
-                    new X509TrustManager() {
-                        @Override
-                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                            //empty
-                        }
-
-                        @Override
-                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
-                            //empty
-                        }
-
-                        @Override
-                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
-                            return new java.security.cert.X509Certificate[]{};
-                        }
-                    }
-            };
-
-            // Install the all-trusting trust manager
-            final SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, trustAllCerts, new java.security.SecureRandom());
-
-            // Create an ssl socket factory with our all-trusting manager
-            final SSLSocketFactory sslSocketFactory = sslContext.getSocketFactory();
-
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
-            builder.sslSocketFactory(sslSocketFactory, (X509TrustManager) trustAllCerts[0]);
-            builder.hostnameVerifier(new HostnameVerifier() {
-                @Override
-                public boolean verify(String hostname, SSLSession session) {
-                    return true;
-                }
-            });
-            return builder;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    private static OkHttpClient getHttpClient() {
+        return new OkHttpClient().newBuilder().readTimeout(TIMEOUT, TimeUnit.SECONDS)
+                .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(TIMEOUT, TimeUnit.SECONDS).build();
     }
 
+    private static Gson getGsonFactory() {
+        return new GsonBuilder()
+                .setLenient()
+                .create();
+    }
 }
