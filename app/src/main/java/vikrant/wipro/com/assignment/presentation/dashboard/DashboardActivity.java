@@ -86,7 +86,6 @@ public class DashboardActivity extends BaseActivity implements DashboardContract
 
     @Override
     public void errorInFeedsRetrieval(AppException exception) {
-        mFeeds = null;
         showErrorView(exception, new View.OnClickListener() {
             @Override
             public void onClick(View view) {
